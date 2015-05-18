@@ -8,7 +8,7 @@ class HugeInt{
 	friend HugeInt &operator +(HugeInt &, HugeInt &);
 	friend HugeInt &operator -(HugeInt &, HugeInt &);
 public:
-	HugeInt(int i);
+	HugeInt(int i = 0);
 	HugeInt(string s);
 	const HugeInt &operator =(const HugeInt &);
 private:

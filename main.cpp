@@ -1,4 +1,4 @@
-#include "HUGEINT.cpp"
+#include "HUGEINT.h"
 using namespace std;
 
 int main()
@@ -10,7 +10,7 @@ int main()
 
 	cin >> x;
 	result = x + y;
-	cout << x << "" << y << "=" << result << endl;
+	cout << x << "+" << y << "=" << result << endl;
 
 	result = z - x;
 	cout << result << endl;

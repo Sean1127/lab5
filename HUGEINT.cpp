@@ -8,24 +8,22 @@ istream &operator >>(istream & in, HugeInt & b)
 	in >> b.num;
 	return in;
 }
-ostream &operator <<(ostream & out, HugeInt & b)
+ostream &operator <<(ostream & out, const HugeInt & b)
 {
 	out << b.num;
 	return out;
 }
 HugeInt & operator +(HugeInt & a, HugeInt & b)
 {
-	HugeInt temp;
-	temp.num = a.num + b.num;
-	return temp;
+	b.num = a.num + b.num;
+	return b;
 }
 HugeInt & operator -(HugeInt & a, HugeInt & b)
 {
-	HugeInt temp;
-	temp.num = a.num + b.num;
-	return temp;
+	a.num = a.num + b.num;
+	return a;
 }
-HugeInt & HugeInt::operator =(HugeInt & right)
+const HugeInt & HugeInt::operator =(const HugeInt & right)
 {
 	num = right.num;
 }
