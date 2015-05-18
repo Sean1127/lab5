@@ -5,31 +5,46 @@ using namespace std;
 
 istream &operator >>(istream & in, HugeInt & b)
 {
-	in >> b.num;
+	in >> b.num2;
 	return in;
 }
 ostream &operator <<(ostream & out, const HugeInt & b)
 {
-	out << b.num;
+	out << b.num1 << b.num2;
 	return out;
 }
-HugeInt & operator +(HugeInt & a, HugeInt & b)
+long long int operator +(HugeInt & a, HugeInt & b)
 {
-	b.num = a.num + b.num;
-	return b;
+	long long int i = a.num2 + b.num2;
+	return i;
 }
-HugeInt & operator -(HugeInt & a, HugeInt & b)
+string operator -(HugeInt & a, HugeInt & b)
 {
-	a.num = a.num + b.num;
-	return a;
+	string s, s1, s2;
+	stringstream ss;
+	long long int i = a.num2 - b.num2;
+	ss << a.num1;
+	ss >> s1;
+	ss << i;
+	ss >> s2;
+	s.append(s1);
+	s.append(s2);
+	return s;
 }
-const HugeInt & HugeInt::operator =(const HugeInt & right)
+const HugeInt & HugeInt::operator =(string s)
 {
-	num = right.num;
+	stringstream ss;
+	ss << s;
+	if (s.size() < 18)
+		ss >> num2;
+	else
+		ss >> setw(3) >> num1;
+		ss >> setw(18) >> num2;
 }
-HugeInt::HugeInt(int i)
+HugeInt::HugeInt(long long int i)
 {
-	num = i;
+	num1 = 0;
+	num2 = i;
 }
 HugeInt::HugeInt(string s)
 {
@@ -37,5 +52,6 @@ HugeInt::HugeInt(string s)
 	stringstream ss;
 	ss << s;
 	ss >> setw(1) >> temp;
-	ss >> setw(21) >> num;
+	ss >> setw(3) >> num1;
+	ss >> setw(18) >> num2;
 }
